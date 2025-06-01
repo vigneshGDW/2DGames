@@ -24,7 +24,6 @@ namespace BucketMove.Level_1
                 if (!ball.GetComponent<CircleCollider2D>())
                 {
                     ball.AddComponent<CircleCollider2D>();
-                    ball.GetComponent<Collider2D>().isTrigger = true;
                 }
                 yield return new WaitForSeconds(delayBetweenBalls);
             }
