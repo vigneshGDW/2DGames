@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: d1c3d9333b054aa4aa97a8cef655a1be
+guid: 9cda2e3adf648794cb1eeaa41e9ca9ad
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3846815576120820967
-    second: 20250530_1415_Glossy Spherical Marvel_simple_compose_01jwg5w94we8za5mzbp7sb0eyn
-      (1)_0
+      213: -6305246297815426158
+    second: 20250604_0919_Sad Cartoon Character_remix_01jwwgvz59fpnvpabqcjp57rkj_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -127,14 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 20250530_1415_Glossy Spherical Marvel_simple_compose_01jwg5w94we8za5mzbp7sb0eyn
-        (1)_0
+      name: 20250604_0919_Sad Cartoon Character_remix_01jwwgvz59fpnvpabqcjp57rkj_0
       rect:
         serializedVersion: 2
-        x: 52
-        y: 296
-        width: 921
-        height: 932
+        x: 166
+        y: 0
+        width: 679
+        height: 1497
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 91bf0e46d9d5d9ac0800000000000000
-      internalID: -3846815576120820967
+      spriteID: 29b5d5516e34f78a0800000000000000
+      internalID: -6305246297815426158
       vertices: []
       indices: 
       edges: []
@@ -163,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      20250530_1415_Glossy Spherical Marvel_simple_compose_01jwg5w94we8za5mzbp7sb0eyn (1)_0: -3846815576120820967
+      20250604_0919_Sad Cartoon Character_remix_01jwwgvz59fpnvpabqcjp57rkj_0: -6305246297815426158
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

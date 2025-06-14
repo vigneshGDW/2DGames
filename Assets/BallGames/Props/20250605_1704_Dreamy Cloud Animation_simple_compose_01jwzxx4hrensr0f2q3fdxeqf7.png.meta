@@ -118,6 +118,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -222,7 +235,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      20250605_1704_Dreamy Cloud Animation_simple_compose_01jwzxx4hrensr0f2q3fdxeqf7_0: -8259588904039943496
+      20250605_1704_Dreamy Cloud Animation_simple_compose_01jwzxx4hrensr0f2q3fdxeqf7_1: 3551439622494144975
+      20250605_1704_Dreamy Cloud Animation_simple_compose_01jwzxx4hrensr0f2q3fdxeqf7_2: -6094157333604828752
+      20250605_1704_Dreamy Cloud Animation_simple_compose_01jwzxx4hrensr0f2q3fdxeqf7_3: -6583195949136666739
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

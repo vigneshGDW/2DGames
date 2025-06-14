@@ -7,8 +7,12 @@ namespace BucketMove.Level_1
     {
         public GameObject[] ColorBalls;
         public float delayBetweenBalls = 1f;
-        void Start()
+        void OnEnable()
         {
+            for (int i = 0; i < ColorBalls.Length; i++)
+            {
+                ColorBalls[i].SetActive(true);
+            }
             StartCoroutine(FalldownAllBalls(ColorBalls));
         }
         private IEnumerator FalldownAllBalls(GameObject[] Balls)
@@ -28,5 +32,6 @@ namespace BucketMove.Level_1
                 yield return new WaitForSeconds(delayBetweenBalls);
             }
         }
+
     }
 }
