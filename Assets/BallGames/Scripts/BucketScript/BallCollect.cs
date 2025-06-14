@@ -6,12 +6,14 @@ namespace BucketMove.Level_1
     {
         public int count = 0;
         public GameManager gameManager;
+        public ProgressBar progressBar;
         private void OnCollisionExit2D(Collision2D other)
         {
             if (other.gameObject != null)
             {
                 other.gameObject.SetActive(false);
                 count += 1;
+                progressBar.IncreaseProgress();
                 if (count == 25)
                 {
                     //Debug.Log("Level 1 - Completed");

@@ -3,33 +3,23 @@ using UnityEngine.UI;
 
 namespace BucketMove
 {
-        public class ProgressBar : MonoBehaviour
+    public class ProgressBar : MonoBehaviour
+    {
+        public Image SlideBar;
+        public int totalSteps = 10;
+
+        private int currentStep = 0;
+        public void IncreaseProgress()
         {
-            [SerializeField] private Slider slider;
-            [SerializeField] private Text progressText; // Optional
-
-            // Set value between 0 and 1
-            public void SetProgress(float progress)
-            {
-                progress = Mathf.Clamp01(progress); // Ensures value is between 0 and 1
-                slider.value = progress;
-
-                if (progressText != null)
-                {
-                    progressText.text = (progress * 100f).ToString("F0") + "%";
-                }
-            }
-
-            // Call this to set instantly to full
-            public void SetFull()
-            {
-                SetProgress(1f);
-            }
-
-            // Call this to reset the bar
-            public void ResetProgress()
-            {
-                SetProgress(0f);
-            }
+            currentStep++;
+            float progress = Mathf.Clamp01((float)currentStep / totalSteps);
+            SlideBar.fillAmount = progress;
         }
+        public void ResetProgress()
+        {
+            currentStep = 0;
+            SlideBar.fillAmount = 0f;
+        }
+        
+    }
 }
