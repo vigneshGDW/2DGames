@@ -7,6 +7,7 @@ namespace BucketMove.Level_1
     {
         public GameObject[] ColorBalls;
         public float delayBetweenBalls = 1f;
+        public GameObject Parntobj;
         void OnEnable()
         {
             for (int i = 0; i < ColorBalls.Length; i++)
@@ -28,6 +29,10 @@ namespace BucketMove.Level_1
                 if (!ball.GetComponent<CircleCollider2D>())
                 {
                     ball.AddComponent<CircleCollider2D>();
+                }
+                if (Parntobj != null)
+                {
+                    ball.transform.SetParent(Parntobj.transform);
                 }
                 yield return new WaitForSeconds(delayBetweenBalls);
             }
