@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a07c899fc5bcbe046b87ae3ebbcca64b
+guid: c2a16efca94914b45910eb6cad79cd21
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -345704428842394673
-    second: Leonardo_Phoenix_10_A_vibrant_and_whimsical_background_with_a_0_0
+      213: -7448693507194968948
+    second: 20250628_1930_Glossy Swirled Sphere_simple_compose_01jyvda950fjc9zgsy87d5dkvb_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Leonardo_Phoenix_10_A_vibrant_and_whimsical_background_with_a_0_0
+      name: 20250628_1930_Glossy Swirled Sphere_simple_compose_01jyvda950fjc9zgsy87d5dkvb_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 896
-        height: 1344
+        x: 108
+        y: 366
+        width: 807
+        height: 811
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fcbd19157afc33bf0800000000000000
-      internalID: -345704428842394673
+      spriteID: c84a2e658bce0a890800000000000000
+      internalID: -7448693507194968948
       vertices: []
       indices: 
       edges: []
@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      20250628_1930_Glossy Swirled Sphere_simple_compose_01jyvda950fjc9zgsy87d5dkvb_0: -7448693507194968948
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

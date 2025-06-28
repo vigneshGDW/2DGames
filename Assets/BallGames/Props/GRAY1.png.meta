@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: ce913ff49b12931469ea9b7d5f40dec7
+guid: 7185b50926bb8f641aaa0efdc29e8052
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6055282117309706870
-    second: 20250530_1408_Purple Glossy Sphere_simple_compose_01jwg5e5ayfpyv87hq4zz8e5w3
-      1_0
+      213: -2177790897338354367
+    second: 20250628_1933_Glossy Sphere Delight_simple_compose_01jyvdh998fep98zwph7tawfks_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -98,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -111,7 +110,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -127,14 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 20250530_1408_Purple Glossy Sphere_simple_compose_01jwg5e5ayfpyv87hq4zz8e5w3
-        1_0
+      name: 20250628_1933_Glossy Sphere Delight_simple_compose_01jyvdh998fep98zwph7tawfks_0
       rect:
         serializedVersion: 2
-        x: 94
-        y: 345
-        width: 839
-        height: 852
+        x: 83
+        y: 335
+        width: 858
+        height: 866
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6723501e00fa80450800000000000000
-      internalID: 6055282117309706870
+      spriteID: 1457111a7bee6c1e0800000000000000
+      internalID: -2177790897338354367
       vertices: []
       indices: 
       edges: []
@@ -163,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      20250530_1408_Purple Glossy Sphere_simple_compose_01jwg5e5ayfpyv87hq4zz8e5w3 1_0: 6055282117309706870
+      20250628_1933_Glossy Sphere Delight_simple_compose_01jyvdh998fep98zwph7tawfks_0: -2177790897338354367
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

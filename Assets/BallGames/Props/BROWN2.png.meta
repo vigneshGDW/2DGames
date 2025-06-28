@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: 49ce3898d1e29164d94c773be4398608
+guid: ec396ed0577a38d47aabe55d8d85c374
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5559961946647499389
-    second: 20250530_1408_Purple Glossy Sphere_simple_compose_01jwg5e5b1ensred0by3z2z152
-      1_0
+      213: 8827764891311847070
+    second: 20250628_1926_Glossy Brown Sphere_simple_compose_01jyvd5xwrennseh5xh1q8ee17_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -98,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -111,7 +110,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -127,14 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 20250530_1408_Purple Glossy Sphere_simple_compose_01jwg5e5b1ensred0by3z2z152
-        1_0
+      name: 20250628_1926_Glossy Brown Sphere_simple_compose_01jyvd5xwrennseh5xh1q8ee17_0
       rect:
         serializedVersion: 2
-        x: 74
-        y: 343
-        width: 876
-        height: 887
+        x: 22
+        y: 278
+        width: 982
+        height: 978
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 38de265411c07d2b0800000000000000
-      internalID: -5559961946647499389
+      spriteID: e96be4ba565828a70800000000000000
+      internalID: 8827764891311847070
       vertices: []
       indices: 
       edges: []
@@ -163,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      20250530_1408_Purple Glossy Sphere_simple_compose_01jwg5e5b1ensred0by3z2z152 1_0: -5559961946647499389
+      20250628_1926_Glossy Brown Sphere_simple_compose_01jyvd5xwrennseh5xh1q8ee17_0: 8827764891311847070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

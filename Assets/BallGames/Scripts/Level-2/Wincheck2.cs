@@ -7,7 +7,6 @@ namespace BucketMove.Level_2
         public int count = 0;
         public GameManager gameManager;
         public ProgressBar progressBar;
-
         private void OnCollisionExit2D(Collision2D other)
         {
             if (other.gameObject != null)
