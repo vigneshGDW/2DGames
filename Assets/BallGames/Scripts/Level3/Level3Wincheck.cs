@@ -7,20 +7,28 @@ namespace BucketMove.Level_3
         public string[] BallOrderToCollect;
         public GameObject[] ColorGlows;
         public int count = 0;
+        public ProgressBar progressBar;
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject != null)
             {
-                if (other.gameObject.name == BallOrderToCollect[count])
+                if (count <= 10)
                 {
-                    other.gameObject.SetActive(false);
-                    ColorGlows[count].SetActive(false);
-                    count += 1;
-                    ColorGlows[count].SetActive(true);
-                }
-                else
-                {
-                    Debug.Log("Wrong Ball Object");
+                    if (other.gameObject.name == BallOrderToCollect[count])
+                    {
+                        other.gameObject.SetActive(false);
+                        ColorGlows[count].SetActive(false);
+                        count += 1;
+                        if (count <= 10)
+                        {
+                            ColorGlows[count].SetActive(true);
+                            progressBar.IncreaseProgress();
+                        }
+                    }
+                    else
+                    {
+                        // Debug.Log("Wrong Ball Object");
+                    }
                 }
             }
         }
