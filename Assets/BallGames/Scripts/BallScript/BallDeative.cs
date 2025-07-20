@@ -4,7 +4,7 @@ namespace BucketMove.Level_1
     public class BallDeative : MonoBehaviour
     {
         public GameManager gameManager;
-        private int count = 0;
+        public int count = 0;
         void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject != null)
@@ -13,6 +13,7 @@ namespace BucketMove.Level_1
                 count += 1;
                 if (count >= 30)
                 {
+                   // Debug.Log("Enered---------------1");
                     gameManager.LevelFailure();
                 }
             }

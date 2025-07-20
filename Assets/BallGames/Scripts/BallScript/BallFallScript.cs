@@ -8,13 +8,12 @@ namespace BucketMove.Level_1
         public GameObject[] ColorBalls;
         public float delayBetweenBalls = 1f;
         public GameObject Parntobj;
+        public GameObject[] ColorBallsresetpropes;
+        public BallCollect ballCollect;
+        public BallDeative ballDeative;
         void OnEnable()
         {
-            for (int i = 0; i < ColorBalls.Length; i++)
-            {
-                ColorBalls[i].SetActive(true);
-            }
-            StartCoroutine(FalldownAllBalls(ColorBalls));
+            Level1Resetfun();
         }
         private IEnumerator FalldownAllBalls(GameObject[] Balls)
         {
@@ -36,6 +35,27 @@ namespace BucketMove.Level_1
                 }
                 yield return new WaitForSeconds(delayBetweenBalls);
             }
+        }
+        private void Level1Resetfun()
+        {
+            ballCollect.count = 0;
+            ballDeative.count = 0;
+            if (ColorBalls != null)
+            {
+                for (int i = 0; i < ColorBalls.Length; i++)
+                {
+                    if (ColorBalls[i] != null)
+                    {
+                        Destroy(ColorBalls[i]);
+                    }
+                }
+            }
+            ColorBalls = new GameObject[ColorBallsresetpropes.Length];
+            for (int m = 0; m < ColorBallsresetpropes.Length; m++)
+            {
+                ColorBalls[m] = ColorBallsresetpropes[m];
+            }
+            StartCoroutine(FalldownAllBalls(ColorBalls));
         }
 
     }

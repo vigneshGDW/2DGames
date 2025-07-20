@@ -34,6 +34,7 @@ namespace BucketMove.Level_4
                     else
                     {
                         Debug.Log("Resetfun");
+                        other.gameObject.SetActive(false);
                     }
                 }
             }

@@ -18,12 +18,9 @@ namespace BucketMove.Level_1
                 {
                     //Debug.Log("Level 1 - Completed");
                     gameManager.LevelCompleted();
+                    gameManager.Level1Win = true;
                 }
             }
-        }
-        void OnEnable()
-        {
-            count = 0;
         }
     }
 }
