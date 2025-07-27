@@ -7,23 +7,20 @@ namespace BucketMove.Level_2
         public int count = 0;
         public GameManager gameManager;
         public ProgressBar progressBar;
-        private void OnCollisionExit2D(Collision2D other)
+        
+        private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject != null)
             {
                 other.gameObject.SetActive(false);
                 count += 1;
                 progressBar.IncreaseProgress();
-                if (count == 20)
+                if (count == 100)
                 {
-                    //Debug.Log("Level 1 - Completed");
-                    //gameManager.LevelCompleted();
+                    gameManager.LevelCompleted();
+                    gameManager.Level2Win = true;
                 }
             }
-        }
-        void OnEnable()
-        {
-            count = 0;
         }
     }
 }

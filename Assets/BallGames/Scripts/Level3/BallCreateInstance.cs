@@ -11,18 +11,20 @@ namespace BucketMove.Level_3
         private int currentBallIndex = 0;
         public GameObject Resetparent;
         public ProgressBar progressBar;
-        private void Start()
+        public GameManager gameManager;
+        public Level3Wincheck level3Wincheck;
+        void OnEnable()
         {
-            startballfall();
-        }
-        public void startballfall()
-        {
-            StartCoroutine(DropBalls());
+            Resetfun();
         }
         private IEnumerator DropBalls()
         {
             while (currentBallIndex < Balls.Length)
             {
+                if (Resetparent.transform.childCount <= 3)
+                {
+                    gameManager.LevelFailure();
+                }
                 GameObject ball = Balls[currentBallIndex].gameObject;
                 ball.SetActive(true);
                 ball.transform.SetParent(BallParent.transform);
@@ -34,6 +36,7 @@ namespace BucketMove.Level_3
         }
         public void Resetfun()
         {
+            level3Wincheck.Level3GlowReset();
             for (int m = 0; m < Balls.Length; m++)
             {
                 if (Balls[m].GetComponent<Rigidbody2D>() != null)
@@ -55,6 +58,8 @@ namespace BucketMove.Level_3
             }
             progressBar.ResetProgress();
             currentBallIndex = 0;
+            StopAllCoroutines();
+            StartCoroutine(DropBalls());
         }
     }
 }

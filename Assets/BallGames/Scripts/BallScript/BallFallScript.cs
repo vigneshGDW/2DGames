@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Numerics;
 using UnityEngine;
 
 namespace BucketMove.Level_1
@@ -11,6 +12,7 @@ namespace BucketMove.Level_1
         public GameObject[] ColorBallsresetpropes;
         public BallCollect ballCollect;
         public BallDeative ballDeative;
+        public GameObject Resetparent;
         void OnEnable()
         {
             Level1Resetfun();
@@ -20,6 +22,7 @@ namespace BucketMove.Level_1
             for (int i = 0; i < Balls.Length; i++)
             {
                 GameObject ball = Balls[i];
+                ball.SetActive(true);
                 if (!ball.GetComponent<Rigidbody2D>())
                 {
                     ball.AddComponent<Rigidbody2D>();
@@ -40,23 +43,48 @@ namespace BucketMove.Level_1
         {
             ballCollect.count = 0;
             ballDeative.count = 0;
+
             if (ColorBalls != null)
             {
                 for (int i = 0; i < ColorBalls.Length; i++)
                 {
-                    if (ColorBalls[i] != null)
+                    GameObject ball = ColorBalls[i];
+
+                    if (ball != null)
                     {
-                        Destroy(ColorBalls[i]);
+                        // Remove Rigidbody2D if exists
+                        Rigidbody2D rb = ball.GetComponent<Rigidbody2D>();
+                        if (rb != null)
+                            Destroy(rb);
+
+                        // Remove CircleCollider2D if exists
+                        CircleCollider2D col = ball.GetComponent<CircleCollider2D>();
+                        if (col != null)
+                            Destroy(col);
+
+                        // Reparent and reset position
+                        if (Parntobj != null && Resetparent != null)
+                        {
+                            ball.transform.SetParent(Resetparent.transform);
+                            ball.transform.localPosition = UnityEngine.Vector3.zero;
+                        }
                     }
                 }
             }
+
+            // Reset the ColorBalls array
             ColorBalls = new GameObject[ColorBallsresetpropes.Length];
             for (int m = 0; m < ColorBallsresetpropes.Length; m++)
             {
                 ColorBalls[m] = ColorBallsresetpropes[m];
             }
+
+            // Reset progress and restart logic
+            ballCollect.progressBar.ResetProgress();
+            StopAllCoroutines();
             StartCoroutine(FalldownAllBalls(ColorBalls));
         }
+
 
     }
 }

@@ -14,10 +14,10 @@ namespace BucketMove
         public BallFallScript Level1Resetfun;
         void Start()
         {
-            if (!StartCanwas.gameObject.activeSelf)
-            {
-                StartCanwas.gameObject.SetActive(true);
-            }
+            // if (!StartCanwas.gameObject.activeSelf)
+            // {
+            //     StartCanwas.gameObject.SetActive(true);
+            // }
         }
 
         public void PlayFunctions()
