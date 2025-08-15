@@ -3,35 +3,96 @@ using UnityEngine;
 
 namespace BucketMove.Level_4
 {
-    public class BallFalldonw4 : MonoBehaviour
+    public class BallFallDown4 : MonoBehaviour
     {
-        public GameObject Ball;
-        public float Duration = 1f;
-        public GameObject ballparent;
-        void Start()
+       public GameObject[] ColorBalls;
+        public float delayBetweenBalls = 1f;
+        public GameObject Parntobj;
+        public GameObject[] ColorBallsresetpropes;
+        public GameObject Resetparent;
+        public GameManager gameManager;
+
+        void OnEnable()
         {
-            StartCoroutine(Startballfall());
+            Level2Resetfun();
         }
-        private IEnumerator Startballfall()
+
+        private IEnumerator FalldownAllBalls(GameObject[] Balls)
         {
-            while (0 < Ball.transform.childCount)
+            for (int i = 0; i < Balls.Length; i++)
             {
-                for (int m = 0; m < Ball.transform.childCount; m++)
+                if(Resetparent.transform.childCount <= 3)
                 {
-                    if (Ball.transform.GetChild(m).gameObject != null)
+                    gameManager.LevelFailure();
+                }
+                GameObject ball = Balls[i];
+
+                if (ball == null)
+                    continue;
+
+                ball.SetActive(true);
+
+                // Add Rigidbody2D if missing
+                if (!ball.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
+                {
+                    rb = ball.AddComponent<Rigidbody2D>();
+                }
+                rb.gravityScale = 1f;
+
+                // Add CircleCollider2D if missing
+                if (!ball.GetComponent<CircleCollider2D>())
+                {
+                    ball.AddComponent<CircleCollider2D>();
+                    ball.GetComponent<CircleCollider2D>().radius = 350f;
+                }
+
+                // Set parent
+                if (Parntobj != null)
+                {
+                    ball.transform.SetParent(Parntobj.transform);
+                }
+
+                yield return new WaitForSeconds(delayBetweenBalls);
+            }
+        }
+
+        private void Level2Resetfun()
+        {
+
+            if (ColorBalls != null)
+            {
+                foreach (var ball in ColorBalls)
+                {
+                    if (ball == null)
+                        continue;
+
+                    // Remove Rigidbody2D
+                    if (ball.TryGetComponent<Rigidbody2D>(out var rb))
+                        Destroy(rb);
+
+                    // Remove CircleCollider2D
+                    if (ball.TryGetComponent<CircleCollider2D>(out var col))
+                        Destroy(col);
+
+                    // Reparent and reset
+                    if (Parntobj != null && Resetparent != null)
                     {
-                        //Instantiate(Ball.transform.GetChild(m).gameObject, Vector3.zero, Quaternion.identity);
-                        Ball.transform.GetChild(m).gameObject.transform.SetParent(ballparent.transform);
-                        Ball.transform.GetChild(m).gameObject.AddComponent<CircleCollider2D>();
-                        Ball.transform.GetChild(m).gameObject.AddComponent<Rigidbody2D>();
-                        yield return new WaitForSeconds(Duration);
-                        if (m == Ball.transform.childCount)
-                        {
-                            StopAllCoroutines();
-                        }
+                        ball.transform.SetParent(Resetparent.transform);
+                        ball.transform.localPosition = Vector3.zero;
                     }
                 }
             }
+
+            // Refresh the ColorBalls array
+            ColorBalls = new GameObject[ColorBallsresetpropes.Length];
+            for (int m = 0; m < ColorBallsresetpropes.Length; m++)
+            {
+                ColorBalls[m] = ColorBallsresetpropes[m];
+            }
+
+            // Restart ball logic
+            StopAllCoroutines();
+            StartCoroutine(FalldownAllBalls(ColorBalls));
         }
     }
 }

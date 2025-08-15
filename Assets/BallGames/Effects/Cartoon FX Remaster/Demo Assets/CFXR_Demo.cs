@@ -2,18 +2,19 @@
 // Cartoon FX
 // (c) 2012-2025 Jean Moreno
 //--------------------------------------------------------------------------------------------------------------------------------
-
+#if UNITY_6000_0_OR_NEWER && CFXR_NEW_INPUT_SYSTEM
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
-#if UNITY_6000_0_OR_NEWER && CFXR_NEW_INPUT_SYSTEM
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 #endif
 #if CFXR_URP_INSTALLED
-using UnityEngine.Rendering.Universal;
+
 #endif
 
 namespace CartoonFX

@@ -45,9 +45,10 @@ namespace BucketMove
             }
             else if (!Level4Win)
             {
-                TaskCanwas.gameObject.SetActive(true);
-                Task4show.SetActive(true);
-                Task3show.SetActive(false);
+                StartCanwas.gameObject.SetActive(true);
+                Level1Win = false;
+                Level2Win = false;
+                Level3Win = false;
             }
             else if (!Level5Win)
             {
