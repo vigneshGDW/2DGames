@@ -1,12 +1,14 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DragLine : MonoBehaviour
 {
-    public LineRenderer lineRenderer;
+    //public LineRenderer lineRenderer;
     private Vector3 lostpostion;
     private bool dragging = false;
-
+    public PlyerController plyerController;
+    public Material Player1Material, Player2Material;
     [SerializeField] private LineDragConnect[] LineDragProcess;
 
     [Serializable]
@@ -31,6 +33,7 @@ public class DragLine : MonoBehaviour
     private Vector2 startPos;
     private Vector2 dragVector;
     private Vector3 startWorldPos;
+    private List<LineRenderer> createdLines = new List<LineRenderer>();
     private void OnMouseDown()
     {
         if (dragging) return;
@@ -137,35 +140,88 @@ public class DragLine : MonoBehaviour
     // -----------------------------------------------------
     // Moves object + draws a line to the new target position
     // -----------------------------------------------------
-    private void MoveTo(GameObject target, ref bool targetbool, string name )
+    private void MoveTo(GameObject target, ref bool targetbool, string direction)
     {
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(
-            new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f)
-        );
+            new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f));
 
         Vector3 targetPos = target.transform.position;
 
         if (Vector3.Distance(mouseWorldPos, targetPos) < 0.5f)
         {
-            targetbool = true;   // NOW IT UPDATES CORRECTLY
+            targetbool = true;
 
-            lineRenderer.positionCount = 2;
-            lineRenderer.SetPosition(0, startWorldPos);
-            lineRenderer.SetPosition(1, targetPos);
+            // Create a permanent line
+            CreatePermanentLine(startWorldPos, targetPos);
 
-            // Update opposite side of target object
+            // Update neighbor
             DragLine targetDL = target.GetComponent<DragLine>();
-            Debug.Log(targetDL.name);
-            if(name == "UP")
-                targetDL.LineDragProcess[0].DownSide = true;
-            if (name == "Down")
-                targetDL.LineDragProcess[0].UpSide = true;
-             if (name == "Right")
-                targetDL.LineDragProcess[0].LeftSide = true;
-             if (name == "Left")
-                targetDL.LineDragProcess[0].RightSide = true;
+
+            switch (direction)
+            {
+                case "UP":
+                    targetDL.LineDragProcess[0].DownSide = true;
+                    break;
+
+                case "Down":
+                    targetDL.LineDragProcess[0].UpSide = true;
+                    break;
+
+                case "Right":
+                    targetDL.LineDragProcess[0].LeftSide = true;
+                    break;
+
+                case "Left":
+                    targetDL.LineDragProcess[0].RightSide = true;
+                    break;
+            }
         }
     }
 
+    private void CreatePermanentLine(Vector3 start, Vector3 end)
+    {
+        GameObject newLine = new GameObject("ConnectionLine");
+        LineRenderer lr = newLine.AddComponent<LineRenderer>();
+
+        lr.startWidth = 0.5f;
+        lr.endWidth = 0.5f;
+        lr.sortingOrder = 5;
+        // Assign material (use your own)
+        if(!plyerController.Player1)
+        {
+            plyerController.Player1 = true;
+            plyerController.Player2 = false;
+            lr.material = Player1Material;
+        }
+        else if(!plyerController.Player2)
+        {
+            plyerController.Player1 = false;
+            plyerController.Player2 = true;
+            lr.material = Player2Material;
+        }
+
+        lr.positionCount = 2;
+        lr.SetPosition(0, start);
+        lr.SetPosition(1, end);
+
+        createdLines.Add(lr);
+        AddColliderToLine(lr, newLine);
+    }
+    private void AddColliderToLine(LineRenderer lr, GameObject lineObject)
+    {
+        EdgeCollider2D edge = lineObject.AddComponent<EdgeCollider2D>();
+
+        int count = lr.positionCount;
+        Vector2[] points = new Vector2[count];
+        edge.isTrigger = true;
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 worldPos = lr.GetPosition(i);
+            points[i] = new Vector2(worldPos.x, worldPos.y);
+        }
+
+        edge.points = points;
+        edge.edgeRadius = 0.05f;  // Thickness of collision
+    }
 
 }

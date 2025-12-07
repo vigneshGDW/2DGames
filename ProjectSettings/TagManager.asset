@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - LeftSide
+  - RightSide
+  - UpSide
+  - DownSide
   layers:
   - Default
   - TransparentFX
