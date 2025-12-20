@@ -186,6 +186,7 @@ public class DragLine : MonoBehaviour
         lr.startWidth = 0.5f;
         lr.endWidth = 0.5f;
         lr.sortingOrder = 5;
+        lr.numCapVertices = 90;
         // Assign material (use your own)
         if(!plyerController.Player1)
         {
