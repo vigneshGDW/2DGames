@@ -8,6 +8,7 @@ public class UserInformation : MonoBehaviour
     public bool NameEntered = false;
     public int MaximumLettersLength;
     private int currentcount = 0;
+    public AudioManager audioManager;
     public void Start()
     {
         ShowPlayerName();
@@ -19,6 +20,7 @@ public class UserInformation : MonoBehaviour
         {
             string playerName = nameInput.text;
             currentcount ++;
+            audioManager.PlayMusic(0, false);
             if (!string.IsNullOrEmpty(playerName))
             {
                 showNameText.text = playerName;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoxPopUp : MonoBehaviour
 {
+    public AudioManager audioManager;
     void OnEnable()
     {
         StartCoroutine(BoxPopUpCoroutine());
@@ -11,6 +12,7 @@ public class BoxPopUp : MonoBehaviour
     private IEnumerator BoxPopUpCoroutine()
     {
         yield return new WaitForSeconds(0.1f);
+        audioManager.PlayMusic(0, false);
         Vector3 originalScale = transform.localScale;
         Vector3 targetScale = originalScale * 1.2f;
         float duration = 0.2f;

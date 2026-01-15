@@ -34,12 +34,14 @@ public class DragLine : MonoBehaviour
     private Vector2 dragVector;
     private Vector3 startWorldPos;
     private List<LineRenderer> createdLines = new List<LineRenderer>();
+    public AudioManager audioManager;
     private void OnMouseDown()
     {
         if (dragging) return;
         dragging = true;
         startWorldPos = transform.position;
         startPos = Input.mousePosition;
+        audioManager.PlayMusic(0, false);
     }
 
     private void OnMouseDrag()
@@ -47,9 +49,9 @@ public class DragLine : MonoBehaviour
         if (!dragging) return;
 
         dragVector = (Vector2)Input.mousePosition - startPos;
-
+        //Debug.Log("enter-------------111");
         if (dragVector.magnitude < 20f) return; // ignore tiny drags
-
+        //Debug.Log("enter-------------222");
         angle = Vector2.SignedAngle(Vector2.up, dragVector);
 
         CheckDirection();
@@ -58,6 +60,7 @@ public class DragLine : MonoBehaviour
     private void OnMouseUp()
     {
         dragging = false;
+        audioManager.PlayMusic(0, false);
     }
 
     // -------------------
@@ -87,11 +90,12 @@ public class DragLine : MonoBehaviour
 
     private void UpMove()
     {
+       // Debug.Log("entered---------Up");
         foreach (var item in LineDragProcess)
         {
             if (item.TopID == -1 || item.UpSide)
             {
-                //Debug.Log("No place Up");
+               // Debug.Log("No place Up");
                 return;
             }
             MoveTo(item.TopObject,ref item.UpSide,item.UP);
@@ -100,6 +104,7 @@ public class DragLine : MonoBehaviour
 
     private void RightMove()
     {
+        //Debug.Log("entered---------Right");
         foreach (var item in LineDragProcess)
         {
             if (item.RightID == -1 || item.RightSide)
@@ -107,17 +112,19 @@ public class DragLine : MonoBehaviour
                 //Debug.Log("No place Right");
                 return;
             }
+            //Debug.Log("Entered---");
             MoveTo(item.RightObject,ref item.RightSide,item.Right);
         }
     }
 
     private void LeftMove()
     {
+        //Debug.Log("entered---------Left");
         foreach (var item in LineDragProcess)
         {
             if (item.LeftID == -1 || item.LeftSide)
             {
-                //Debug.Log("No place Left");
+               // Debug.Log("No place Left");
                 return;
             }
             MoveTo(item.LeftObject,ref item.LeftSide,item.Left);
@@ -126,6 +133,7 @@ public class DragLine : MonoBehaviour
 
     private void DownMove()
     {
+        //Debug.Log("entered---------Down");
         foreach (var item in LineDragProcess)
         {
             if (item.BottomID == -1 || item.DownSide)
@@ -234,7 +242,10 @@ public class DragLine : MonoBehaviour
         {
             foreach(var line in createdLines)
             {
-                Destroy(line.gameObject);
+                if(line != null)
+                {
+                    Destroy(line.gameObject);
+                }
             }
             createdLines.Clear();
         }

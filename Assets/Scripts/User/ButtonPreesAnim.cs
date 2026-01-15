@@ -5,10 +5,12 @@ public class ButtonPreesAnim : MonoBehaviour
 {
     public bool ispreessanim = false;
     public float reducevalue;
+    public AudioManager audioManager;
     public void ButtonpreeFun(GameObject Preeobj)
     {
         if(ispreessanim) return;
         ispreessanim = true;
+        audioManager.PlayMusic(0, false);
         StartCoroutine(ButtonPressAnim(Preeobj));
     }
     private IEnumerator ButtonPressAnim(GameObject pressobj)
