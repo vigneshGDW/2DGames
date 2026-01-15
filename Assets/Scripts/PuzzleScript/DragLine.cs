@@ -91,7 +91,7 @@ public class DragLine : MonoBehaviour
         {
             if (item.TopID == -1 || item.UpSide)
             {
-                Debug.Log("No place Up");
+                //Debug.Log("No place Up");
                 return;
             }
             MoveTo(item.TopObject,ref item.UpSide,item.UP);
@@ -104,7 +104,7 @@ public class DragLine : MonoBehaviour
         {
             if (item.RightID == -1 || item.RightSide)
             {
-                Debug.Log("No place Right");
+                //Debug.Log("No place Right");
                 return;
             }
             MoveTo(item.RightObject,ref item.RightSide,item.Right);
@@ -117,7 +117,7 @@ public class DragLine : MonoBehaviour
         {
             if (item.LeftID == -1 || item.LeftSide)
             {
-                Debug.Log("No place Left");
+                //Debug.Log("No place Left");
                 return;
             }
             MoveTo(item.LeftObject,ref item.LeftSide,item.Left);
@@ -130,7 +130,7 @@ public class DragLine : MonoBehaviour
         {
             if (item.BottomID == -1 || item.DownSide)
             {
-                Debug.Log("No place Down");
+             //   Debug.Log("No place Down");
                 return;
             }
             MoveTo(item.BottomObject,ref item.DownSide,item.Down);
@@ -224,5 +224,40 @@ public class DragLine : MonoBehaviour
         edge.points = points;
         edge.edgeRadius = 0.05f;  // Thickness of collision
     }
-
+    void OnEnable()
+    {
+        ResetLineGameFun();
+    }
+    void OnDisable()
+    {
+        if(createdLines.Count > 0)
+        {
+            foreach(var line in createdLines)
+            {
+                Destroy(line.gameObject);
+            }
+            createdLines.Clear();
+        }
+    }
+    public void ResetLineGameFun()
+    {
+        dragging = false;
+        plyerController.Player1 = false;
+        plyerController.Player2 = false;
+        if(createdLines.Count > 0)
+        {
+            foreach(var line in createdLines)
+            {
+                Destroy(line.gameObject);
+            }
+            createdLines.Clear();
+        }
+        foreach (var item in LineDragProcess)
+        {
+            item.RightSide = false;
+            item.LeftSide = false;
+            item.UpSide = false;
+            item.DownSide = false;
+        }
+    }
 }

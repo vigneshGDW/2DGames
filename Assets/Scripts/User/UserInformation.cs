@@ -6,6 +6,8 @@ public class UserInformation : MonoBehaviour
     public TMP_InputField nameInput;
     public TMP_Text showNameText;
     public bool NameEntered = false;
+    public int MaximumLettersLength;
+    private int currentcount = 0;
     public void Start()
     {
         ShowPlayerName();
@@ -13,17 +15,25 @@ public class UserInformation : MonoBehaviour
 
     public void ShowPlayerName()
     {
-        string playerName = nameInput.text;
-
-        if (!string.IsNullOrEmpty(playerName))
+        if(currentcount < MaximumLettersLength)
         {
-            showNameText.text = playerName;
+            string playerName = nameInput.text;
+            currentcount ++;
+            if (!string.IsNullOrEmpty(playerName))
+            {
+                showNameText.text = playerName;
+            }
+            else
+            {
+                showNameText.text = "Enter your name!";
+                NameEntered = false;
+            }
             NameEntered = true;
         }
-        else
-        {
-            showNameText.text = "Enter your name!";
-            NameEntered = false;
-        }
+    }
+    void OnEnable()
+    {
+        NameEntered = false;
+        currentcount = 0;
     }
 }

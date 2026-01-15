@@ -7,6 +7,7 @@ public class PlaceWinChecker : MonoBehaviour
     public PlyerController plyerController;
     public GameObject LightBlueObj,LightGreenObj;
     public ChanceGiver chanceGiver;
+    public GameManager gameManager;
     public void PlaceWicnCheckFun()
     {
         if(plyerController.Player1)
@@ -14,6 +15,7 @@ public class PlaceWinChecker : MonoBehaviour
             if(LeftSideCheck && RightSideCheck && UpSideCheck && DownSideCheck)
             {
                 IsplaceWin = true;
+                gameManager.PlayerScoreUpdateFun();
                 chanceGiver.itsnowtowork = true;
                 LightGreenObj.SetActive(true);
                 chanceGiver.NextChanceGiveFun();
@@ -31,6 +33,7 @@ public class PlaceWinChecker : MonoBehaviour
             if(LeftSideCheck && RightSideCheck && UpSideCheck && DownSideCheck)
             {
                 IsplaceWin = true;
+                gameManager.PlayerScoreUpdateFun();
                 chanceGiver.itsnowtowork = true;
                 LightBlueObj.SetActive(true);
                 chanceGiver.NextChanceGiveFun();
@@ -44,5 +47,15 @@ public class PlaceWinChecker : MonoBehaviour
             }
         }
     
+    }
+    void OnEnable()
+    {
+        IsplaceWin = false;
+        LeftSideCheck = false;
+        RightSideCheck = false;
+        UpSideCheck = false;
+        DownSideCheck = false;
+        LightBlueObj.SetActive(false);
+        LightGreenObj.SetActive(false);
     }
 }

@@ -78,4 +78,12 @@ public class ChanceGiver : MonoBehaviour
             }
         }
     }
+    void OnEnable()
+    {
+        Player1GreenChance.SetActive(true);
+        Plyer1RedChance.SetActive(false);
+        Player2GreenChance.SetActive(false);
+        Plyer2RedChance.SetActive(true);
+        itsnowtowork = false;
+    }
 }
