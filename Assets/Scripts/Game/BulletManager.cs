@@ -20,6 +20,7 @@ public class BulletManager : MonoBehaviour
     public GameObject Chracter,CenterPostionObj;
     public GameObject LeftSidePostionObj,RightSidePostionObj;
     public bool IsLeftSide,IsRightSide;
+    public ParticleSystem bulletFireEffect;
     void Start()
     {
         for (int i = 0; i < maxBullets; i++)
@@ -77,7 +78,7 @@ public class BulletManager : MonoBehaviour
 
         bullet.transform.position = BulletInsialPostion.position;
         bullet.SetActive(true);
-
+        bulletFireEffect.Play();
         bulletCoroutines[bulletIndex] =
             StartCoroutine(BulletMove(bullet, BulletInsialPostion.position, targetPoint));
 
